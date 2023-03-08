@@ -5,7 +5,8 @@ function MainLayout({children, activeLink}) {
   return (
     <div className="flex flex-col bg-main min-h-screen">
       <Header activeLink={activeLink} />
-      <main className="flex-grow bg-white">{children}</main>
+      {/* <main className="flex-grow">{children}</main> */}
+      {children}
       <Footer />
     </div>
   );

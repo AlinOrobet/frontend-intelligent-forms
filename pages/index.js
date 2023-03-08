@@ -28,10 +28,12 @@ function Dashboard() {
 function Guest() {
   return (
     <MainLayout activeLink="home">
-      <Hero />
-      <Features />
-      <Subscriptions />
-      <Contact />
+      <div className="flex-grow">
+        <Hero />
+        <Features />
+        <Subscriptions />
+        <Contact />
+      </div>
     </MainLayout>
   );
 }
