@@ -27,7 +27,7 @@ function Dashboard() {
 //Guest
 function Guest() {
   return (
-    <MainLayout>
+    <MainLayout activeLink="home">
       <Hero />
       <Features />
       <Subscriptions />

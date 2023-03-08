@@ -3,7 +3,7 @@ import React from "react";
 import MainLayout from "../layout/MainLayout";
 
 function Login() {
-  return <MainLayout>Login</MainLayout>;
+  return <MainLayout activeLink="signin">Login</MainLayout>;
 }
 
 export default Login;
