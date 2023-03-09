@@ -18,19 +18,23 @@ function Features() {
             </p>
           </div>
         </div>
-        <div>
-          <div className="relative w-10 h-10">
+        <div className="flex items-center">
+          <div className="relative w-[900px] h-[200px] ">
             <Image src="/assets/main/create-ft.png" fill />
           </div>
-          <p>
+          <p className="text-lg  text-left ">
             Easily create a form using our form creation page and wait for
             people to complete it.
           </p>
         </div>
         <div>
-          <p>If you are looking to complete a form, enter the URL here: </p>
+          <p className="text-xl text-center">
+            If you are looking to complete a form, enter the URL here:{" "}
+          </p>
           <div>
-            <button>1</button>
+            <button className="py-2 px-4 bg-white rounded-lg w-[340px] block m-auto text-gray text-start mt-5 shadow-2xl">
+              form URL
+            </button>
           </div>
         </div>
       </div>
