@@ -28,7 +28,7 @@ function Hero() {
             GET STARTED
           </button>
         </div>
-        <div className=" absolute top-[120px]   right-[0px]  w-[320px] h-[360px]  md:w-[440px] md:h-[460px]  md:top-[85px]">
+        <div className=" absolute top-[120px]   right-[0px]  w-[320px] h-[360px]  md:w-[440px] md:h-[480px]  md:top-[80px]">
           <Image src="/assets/main/hero-img.png" alt="imagine-hero" fill />
         </div>
       </div>
