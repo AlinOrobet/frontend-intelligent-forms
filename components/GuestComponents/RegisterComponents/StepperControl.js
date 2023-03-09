@@ -1,6 +1,6 @@
 import React from "react";
 
-function StepperControl({handleClick, currentStep, steps}) {
+function StepperControl({handleClick, currentStep, steps, stepHaveErrors}) {
   return (
     <div className="container flex justify-between md:justify-around">
       {/* back button */}
@@ -14,8 +14,12 @@ function StepperControl({handleClick, currentStep, steps}) {
       </button>
       {/* next button */}
       <button
-        onClick={() => handleClick("next")}
-        className="bg-button text-white uppercase py-2 px-5 md:px-8 rounded-md font-semibold cursor-pointer hover:bg-[#223641] hover:text-white transition duration-200 ease-in-out shadow-xl"
+        onClick={() => {
+          if (!stepHaveErrors) handleClick("next");
+        }}
+        className={`bg-button text-white uppercase py-2 px-5 md:px-8 rounded-md font-semibold cursor-pointer hover:bg-[#223641] hover:text-white transition duration-200 ease-in-out shadow-xl ${
+          stepHaveErrors ? "cursor_not_allowed" : ""
+        }`}
       >
         {currentStep === steps.length ? "Confirm" : "Next"}
       </button>

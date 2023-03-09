@@ -29,6 +29,7 @@ module.exports = {
         button: "#1A2A34",
         gray: "#D9D9D9",
         lightBlue: "#4A768D",
+        alert: "#E5B700",
       },
     },
   },

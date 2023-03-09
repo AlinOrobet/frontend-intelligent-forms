@@ -33,16 +33,27 @@ function RegistrationForm({setStep}) {
   const [userData, setUserData] = useState(initialValues);
   const [finalData, setFinalData] = useState([]);
   const [currentStep, setCurrentStep] = useState(1);
+  const [stepHaveErrors, setStepHaveErrors] = useState(true);
   const steps = ["Type of user", "Details", "Final"];
   const displayStep = (step) => {
     switch (step) {
       case 1:
-        return <UserAccount setTypeOfUser={setTypeOfUser} />;
+        return (
+          <UserAccount
+            setTypeOfUser={setTypeOfUser}
+            stepHaveErrors={stepHaveErrors}
+            setStepHaveErrors={setStepHaveErrors}
+          />
+        );
       case 2:
         if (typeOfUser === "Company") {
-          return <CompanyDetails />;
+          return (
+            <CompanyDetails stepHaveErrors={stepHaveErrors} setStepHaveErrors={setStepHaveErrors} />
+          );
         }
-        return <UserDetails />;
+        return (
+          <UserDetails stepHaveErrors={stepHaveErrors} setStepHaveErrors={setStepHaveErrors} />
+        );
       case 3:
         return <Final />;
     }
@@ -74,7 +85,12 @@ function RegistrationForm({setStep}) {
           {displayStep(currentStep)}
         </StepperContext.Provider>
       </div>
-      <StepperControl handleClick={handleClick} currentStep={currentStep} steps={steps} />
+      <StepperControl
+        handleClick={handleClick}
+        currentStep={currentStep}
+        steps={steps}
+        stepHaveErrors={stepHaveErrors}
+      />
     </div>
   );
 }
