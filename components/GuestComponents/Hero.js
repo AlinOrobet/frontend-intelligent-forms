@@ -4,15 +4,17 @@ import Link from "next/link";
 
 function Hero() {
   return (
-    <div className="h-screen w-screen p-3 md:p-5 ">
-      <div className="font-secondary font-bold text-white  md:text-4xl tracking-wider">
-        <h2 className=" text-3xl">Your solution for reducing</h2>
-        <p className="text-2xl">bureaucracy and simplifying your daily tasks</p>
-      </div>
+    <div className="h-full w-screen p-3 md:p-5 ">
+      <h2 className=" text-3xl font-secondary font-bold text-white  md:text-4xl tracking-wider md:leading-normal">
+        Your solution for reducing bureaucracy and simplifying your daily tasks
+      </h2>
 
-      <div className="flex flex-col-reverse md:flex-row justify-between items-center mt-[250px] md:mt-0">
-        <div className=" space-y-8  ">
-          <div className=" font-secondary font-bold text-white text-xl text-center tracking-widest">
+      {/* imag + inner block */}
+      <div className="grid grid-rows-2 md:grid-cols-2 justify-between  mt-[240px] md:mt-10">
+        {/* WE understand + button inner block */}
+        <div className=" space-y-10 md:pr-10 ">
+          {/* We understand part */}
+          <div className=" font-secondary font-bold text-white text-xl text-center tracking-widest md:text-left">
             <p>
               We understand how frustrating it can be to navigate through
               endless paperwork and
@@ -20,14 +22,14 @@ function Hero() {
             bureaucratic red tape, which is why we're here to help.
             <p></p>
           </div>
-
-          <button className=" text-secondary bg-white py-3 px-20 rounded-md font-bold text-lg ">
+          {/* GET STARTED */}
+          <button className=" text-secondary bg-white py-3 px-[100px] rounded-md font-bold text-lg block m-auto shadow-2xl md:m-0 md:px-[60px] ">
             <Link href="/" />
             GET STARTED
           </button>
         </div>
-        <div className=" absolute top-[120px]  right-[0px] md:relative w-[320px] h-[340px]  md:w-[800px] md:h-[800px] ">
-          <Image src="/assets/main/Documents-bro.png" alt="imagine-hero" fill />
+        <div className=" absolute top-[120px]   right-[0px]  w-[320px] h-[360px]  md:w-[440px] md:h-[460px]  md:top-[85px]">
+          <Image src="/assets/main/hero-img.png" alt="imagine-hero" fill />
         </div>
       </div>
     </div>
