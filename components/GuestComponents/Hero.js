@@ -23,7 +23,7 @@ function Hero() {
             <p></p>
           </div>
           {/* GET STARTED */}
-          <button className=" text-secondary bg-white py-3 px-[100px] rounded-md font-bold text-lg block m-auto shadow-2xl md:m-0 md:px-[60px] lg:py-1 ">
+          <button className=" text-secondary bg-white py-3 px-[100px] rounded-md font-bold text-lg block m-auto shadow-2xl md:m-0 md:px-[60px] lg:py-1 hover:scale-110 active:scale-90 ">
             <Link href="/" />
             GET STARTED
           </button>
