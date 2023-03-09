@@ -28,7 +28,7 @@ function Dashboard() {
 function Guest() {
   return (
     <MainLayout activeLink="home">
-      <div className="flex-grow">
+      <div className="flex-grow ">
         <Hero />
         <Features />
         <Subscriptions />

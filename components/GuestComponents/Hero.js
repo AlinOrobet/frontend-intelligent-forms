@@ -4,17 +4,17 @@ import Link from "next/link";
 
 function Hero() {
   return (
-    <div className="h-full w-full p-3 md:p-5 lg:px-10">
+    <div className="h-screen  md:h-full w-full p-5 md:p-7 lg:px-10">
       <h2 className=" text-3xl font-secondary font-bold text-white  md:text-4xl tracking-wider md:leading-normal lg:text-5xl lg:leading-normal ">
         Your solution for reducing bureaucracy and simplifying your daily tasks
       </h2>
 
       {/* imag + inner block */}
-      <div className="grid grid-rows-2 md:grid-cols-2 justify-between  mt-[280px] md:mt-10 lg:items-center lg:justify-center">
+      <div className="grid grid-rows-1 md:grid-cols-2 justify-between  mt-[340px] md:mt-10 lg:items-center lg:justify-center">
         {/* WE understand + button inner block */}
-        <div className=" space-y-10 md:pr-10 ">
+        <div className=" space-y-10 md:pr-8 ">
           {/* We understand part */}
-          <div className=" font-secondary font-bold text-white text-xl text-center tracking-widest md:text-left lg:text-2xl">
+          <div className=" font-secondary font-bold text-white text-xl text-center tracking-widest md:text-left lg:text-2xl lg:mr-[50px]">
             <p>
               We understand how frustrating it can be to navigate through
               endless paperwork and
@@ -28,7 +28,7 @@ function Hero() {
             GET STARTED
           </button>
         </div>
-        <div className=" absolute top-[120px]   right-[0px]  w-[320px] h-[360px]  md:w-[440px] md:h-[480px]  md:top-[80px] lg:h-[600px] lg:w-[550px]  ">
+        <div className=" absolute top-[180px]   right-[0px]  w-[380px] h-[400px]  md:w-[440px] md:h-[480px]  md:top-[80px] lg:h-[600px] lg:w-[550px] ">
           <Image src="/assets/main/hero-img.png" alt="imagine-hero" fill />
         </div>
       </div>
