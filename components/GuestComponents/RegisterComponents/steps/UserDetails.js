@@ -35,7 +35,12 @@ function UserDetails() {
               errors["entityNameU"] ? "border-red-500" : ""
             } rounded-lg`}
           >
-            <Input handleChange={handleChange} type="text" name="entityName" />
+            <Input
+              handleChange={handleChange}
+              type="text"
+              name="entityName"
+              value={userData.UserDetails.entityName}
+            />
             <Label htmlFor="entityName" text="Entity Name" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
             <ToolTip
@@ -59,7 +64,12 @@ function UserDetails() {
               errors["institutionName"] ? "border-red-500" : ""
             } rounded-lg`}
           >
-            <Input handleChange={handleChange} type="text" name="institutionName" />
+            <Input
+              handleChange={handleChange}
+              type="text"
+              name="institutionName"
+              value={userData.UserDetails.institutionName}
+            />
             <Label htmlFor="institutionName" text="Institution Name (optional)" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
             <ToolTip
@@ -82,7 +92,12 @@ function UserDetails() {
                 errors["addressU"] ? "border-red-500" : ""
               } rounded-lg`}
             >
-              <Input handleChange={handleChange} type="text" name="address" />
+              <Input
+                handleChange={handleChange}
+                type="text"
+                name="address"
+                value={userData.UserDetails.address}
+              />
               <Label htmlFor="address" text="Address" />
               <div className="hidden md:inline w-[2px] h-7 bg-button" />
               <ToolTip
@@ -114,7 +129,9 @@ function UserDetails() {
               required
               onChange={(e) => handleChange(e)}
             >
-              <option defaultValue>Choose a type of subscription</option>
+              <option defaultValue>
+                {userData.UserDetails.typeOfSubscription || "Choose a type of subscription"}
+              </option>
               <option value="Free">Free</option>
               <option value="Basic">Basic</option>
               <option value="Pro">Pro</option>

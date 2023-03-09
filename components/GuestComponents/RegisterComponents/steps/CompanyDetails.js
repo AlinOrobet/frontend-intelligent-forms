@@ -35,7 +35,12 @@ function CompanyDetails() {
               errors["entityNameC"] ? "border-red-500" : ""
             } rounded-lg`}
           >
-            <Input handleChange={handleChange} type="text" name="entityName" />
+            <Input
+              handleChange={handleChange}
+              type="text"
+              name="entityName"
+              value={userData.CompanyDetails.entityName}
+            />
             <Label htmlFor="entityName" text="Entity Name" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
             <ToolTip
@@ -59,7 +64,12 @@ function CompanyDetails() {
               errors["fiscalCode"] ? "border-red-500" : ""
             } rounded-lg`}
           >
-            <Input handleChange={handleChange} type="text" name="fiscalCode" />
+            <Input
+              handleChange={handleChange}
+              type="text"
+              name="fiscalCode"
+              value={userData.CompanyDetails.fiscalCode}
+            />
             <Label htmlFor="fiscalCode" text="Fiscal Code" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
             <ToolTip
@@ -83,7 +93,12 @@ function CompanyDetails() {
               errors["addressC"] ? "border-red-500" : ""
             } rounded-lg`}
           >
-            <Input handleChange={handleChange} type="text" name="address" />
+            <Input
+              handleChange={handleChange}
+              type="text"
+              name="address"
+              value={userData.CompanyDetails.address}
+            />
             <Label htmlFor="address" text="Address" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
             <ToolTip
@@ -114,7 +129,9 @@ function CompanyDetails() {
               required
               onChange={(e) => handleChange(e)}
             >
-              <option defaultValue>Choose a type of subscription</option>
+              <option defaultValue>
+                {userData.CompanyDetails.typeOfSubscription || "Choose a type of subscription"}
+              </option>
               <option value="Free">Free</option>
               <option value="Basic">Basic</option>
               <option value="Pro">Pro</option>

@@ -25,6 +25,7 @@ function UserAccount({setTypeOfUser}) {
     let errors_var = user_validate(userData);
     setErrors(errors_var);
   };
+  console.log(userData);
   return (
     <div className="h-full w-full flex justify-center">
       <form className="flex flex-col w-full md:w-4/5">
@@ -43,7 +44,12 @@ function UserAccount({setTypeOfUser}) {
               errors["email"] ? "border-red-500" : ""
             } rounded-lg`}
           >
-            <Input handleChange={handleChange} type="text" name="email" />
+            <Input
+              handleChange={handleChange}
+              type="text"
+              name="email"
+              value={userData.UserAccount.email}
+            />
             <Label htmlFor="email" text="E-mail Address" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
             <ToolTip name="email" icon={<MdAlternateEmail size={25} className="text-button" />} />
@@ -69,6 +75,7 @@ function UserAccount({setTypeOfUser}) {
               handleChange={handleChange}
               type={show.password ? "text" : "password"}
               name="password"
+              value={userData.UserAccount.password}
             />
             <Label htmlFor="password" text="Password" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
@@ -98,6 +105,7 @@ function UserAccount({setTypeOfUser}) {
               handleChange={handleChange}
               type={show.confirmPassword ? "text" : "password"}
               name="confirmPassword"
+              value={userData.UserAccount.confirmPassword}
             />
             <Label htmlFor="confirmPassword" text="Confirm Password" />
             <div className="hidden md:inline w-[2px] h-7 bg-button" />
@@ -123,7 +131,6 @@ function UserAccount({setTypeOfUser}) {
               errors["typeOfUser"] ? "border-red-500" : ""
             } rounded-lg py-1.5 lg:py-2.5 text-xs md:text-sm`}
           >
-            {/* block px-2.5 w-full text-sm text-gray-500 bg-transparent rounded-lg focus:outline-none focus:ring-0 peer leading-8 uppercase appearance-none absolute top-0 bottom-0 left-0 right-0 text-third font-semibold font-secondary */}
             <select
               id="typeOfUser"
               className="block px-2 appearance-none text-third font-semibold font-secondary uppercase bg-transparent focus:outline-none leading-8 absolute top-0 bottom-0 left-0 right-0"
@@ -134,7 +141,9 @@ function UserAccount({setTypeOfUser}) {
                 handleChange(e);
               }}
             >
-              <option defaultValue>Choose a type of account</option>
+              <option defaultValue>
+                {userData.UserAccount.typeOfUser || "Choose a type of account"}
+              </option>
               <option value="Individual">Individual</option>
               <option value="Company">Company</option>
               <option value="PublicInstitution">Public Institution</option>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Input({handleChange, type, name}) {
+function Input({handleChange, type, name, value}) {
   return (
     <>
       <input
@@ -10,6 +10,7 @@ function Input({handleChange, type, name}) {
         placeholder=" "
         onChange={handleChange}
         name={name}
+        value={value}
         required
         autoComplete="off"
       />
