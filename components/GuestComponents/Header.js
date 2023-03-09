@@ -32,7 +32,7 @@ function Header({activeLink}) {
         {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
       </div>
       <ul
-        className={`md:hidden fixed top-0 w-[70%] h-full bg-main ease-in-out duration-1000 z-30 border-r border-r-gray-900 ${
+        className={`lg:hidden fixed top-0 w-[70%] h-full bg-main ease-in-out duration-1000 z-30 border-r border-r-gray-900 ${
           nav ? "left-0" : "left-[-100%]"
         }`}
       >

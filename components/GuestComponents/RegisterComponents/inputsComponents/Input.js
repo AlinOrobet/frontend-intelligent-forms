@@ -1,7 +1,6 @@
 import React from "react";
 
-function Input({handleChange, type, name, touched, setTouched}) {
-  const pair = {[name]: true};
+function Input({handleChange, type, name}) {
   return (
     <>
       <input
@@ -13,11 +12,9 @@ function Input({handleChange, type, name, touched, setTouched}) {
         name={name}
         required
         autoComplete="off"
-        onBlur={() => setTouched((current) => [...current, pair])}
       />
     </>
   );
 }
 
 export default Input;
-//setTouched({...touched}, {[name]: "true"})

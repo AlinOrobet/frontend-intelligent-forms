@@ -1,92 +1,132 @@
 import React, {useState} from "react";
+import {useContext} from "react";
+import {StepperContext} from "../../../../contexts/StepperContext";
+import {user_validate} from "../../../../lib/validations";
 import Label from "../inputsComponents/Label";
 import Input from "../inputsComponents/Input";
 import ToolTip from "../inputsComponents/ToolTip";
 import {AiOutlineDown, AiFillInfoCircle} from "react-icons/ai";
 import {HiOutlineLocationMarker} from "react-icons/hi";
+import {FiAlertTriangle} from "react-icons/fi";
 function UserDetails() {
   const [errors, setErrors] = useState({});
-  const [touched, setTouched] = useState([]);
-  const handleChange = () => {};
+  const {userData, setUserData} = useContext(StepperContext);
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setUserData({...userData}, (userData.UserDetails[name] = value));
+    let errors_var = user_validate(userData);
+    setErrors(errors_var);
+  };
   return (
     <div className="h-full w-full flex justify-center">
       <form className="flex flex-col w-full md:w-4/5">
         {/* Entity Name */}
-        <div className="relative flex items-center border rounded-lg mt-10">
-          <Input
-            handleChange={handleChange}
-            type="text"
-            name="entityName"
-            touched={touched}
-            setTouched={setTouched}
-          />
-          <Label htmlFor="entityName" text="Entity Name" />
-          <div className="w-[3px] h-7 bg-gray" />
-          <ToolTip
-            name="entityName"
-            icon={<AiFillInfoCircle size={25} className="text-[#1A2A34]" />}
-            errors={errors}
-            touched={touched.find((obj) => obj["entityName"] === true)?.["entityName"]}
-          />
+        <div className="mt-8">
+          <div
+            className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
+              errors["entityNameU"] ? "opacity-100 text-red-500" : "opacity-0"
+            }`}
+          >
+            <FiAlertTriangle size={20} />
+            <p className="text-xs md:text-sm">{errors["entityNameU"] || "err"}</p>
+          </div>
+          <div
+            className={`relative flex items-center border border-button ${
+              errors["entityNameU"] ? "border-red-500" : ""
+            } rounded-lg`}
+          >
+            <Input handleChange={handleChange} type="text" name="entityName" />
+            <Label htmlFor="entityName" text="Entity Name" />
+            <div className="hidden md:inline w-[2px] h-7 bg-button" />
+            <ToolTip
+              name="entityName"
+              icon={<AiFillInfoCircle size={25} className="text-button" />}
+            />
+          </div>
         </div>
         {/* Institution Name */}
-        <div className="relative flex items-center border rounded-lg mt-8">
-          <Input
-            handleChange={handleChange}
-            type="text"
-            name="institutionName"
-            touched={touched}
-            setTouched={setTouched}
-          />
-          <Label htmlFor="institutionName" text="Institution Name (optional)" />
-          <div className="w-[3px] h-7 bg-gray" />
-          <ToolTip
-            name="institutionName"
-            icon={<AiFillInfoCircle size={25} className="text-[#1A2A34]" />}
-            errors={errors}
-            touched={touched.find((obj) => obj["institutionName"] === true)?.["institutionName"]}
-          />
-        </div>
-        {/* ADDRESS */}
-        <div className="relative flex items-center border rounded-lg mt-8">
-          <Input
-            handleChange={handleChange}
-            type="text"
-            name="address"
-            touched={touched}
-            setTouched={setTouched}
-          />
-          <Label htmlFor="address" text="Address" />
-          <div className="w-[3px] h-7 bg-gray" />
-          <ToolTip
-            name="address"
-            icon={<HiOutlineLocationMarker size={25} className="text-[#1A2A34]" />}
-            errors={errors}
-            touched={touched.find((obj) => obj["address"] === true)?.["address"]}
-          />
+        <div className="mt-2">
+          <div
+            className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
+              errors["institutionName"] ? "opacity-100 text-red-500" : "opacity-0"
+            }`}
+          >
+            <FiAlertTriangle size={20} />
+            <p className="text-xs md:text-sm">{errors["institutionName"] || "err"}</p>
+          </div>
+          <div
+            className={`relative flex items-center border border-button ${
+              errors["institutionName"] ? "border-red-500" : ""
+            } rounded-lg`}
+          >
+            <Input handleChange={handleChange} type="text" name="institutionName" />
+            <Label htmlFor="institutionName" text="Institution Name (optional)" />
+            <div className="hidden md:inline w-[2px] h-7 bg-button" />
+            <ToolTip
+              name="institutionName"
+              icon={<AiFillInfoCircle size={25} className="text-button" />}
+            />
+          </div>
+          {/* ADDRESS */}
+          <div className="mt-2">
+            <div
+              className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
+                errors["addressU"] ? "opacity-100 text-red-500" : "opacity-0"
+              }`}
+            >
+              <FiAlertTriangle size={20} />
+              <p className="text-xs md:text-sm">{errors["addressU"] || "err"}</p>
+            </div>
+            <div
+              className={`relative flex items-center border border-button ${
+                errors["addressU"] ? "border-red-500" : ""
+              } rounded-lg`}
+            >
+              <Input handleChange={handleChange} type="text" name="address" />
+              <Label htmlFor="address" text="Address" />
+              <div className="hidden md:inline w-[2px] h-7 bg-button" />
+              <ToolTip
+                name="address"
+                icon={<HiOutlineLocationMarker size={25} className="text-button" />}
+              />
+            </div>
+          </div>
         </div>
         {/* Subscription Type */}
-        <div className="relative flex items-center justify-between border rounded-lg py-2 my-4 mt-8">
-          <select
-            id="type"
-            className="block px-2.5 w-full text-sm text-gray-500 bg-transparent rounded-lg focus:outline-none focus:ring-0 peer leading-8 uppercase appearance-none absolute top-0 bottom-0 left-0 right-0"
-            name="type"
-            required
-            onChange={(e) => setTypeOfUser(e.target.value)}
+        <div className="mt-2">
+          <div
+            className={`flex items-center space-x-1 md:space-x-2 ${
+              errors["typeOfSubscriptionU"] ? "opacity-100 text-red-500" : "opacity-0"
+            }`}
           >
-            <option defaultValue>Choose a type of subscription</option>
-            <option value="Free">Free</option>
-            <option value="Basic">Basic</option>
-            <option value="Pro">Pro</option>
-          </select>
-          <div className="opacity-0" />
-          <div className="flex items-center">
-            <div className="w-[2px] h-7 bg-gray" />
-            <ToolTip
-              name="type"
-              icon={<AiOutlineDown size={25} className="text-[#1A2A34]" />}
-              errors={errors}
-            />
+            <FiAlertTriangle size={20} />
+            <p className="text-xs md:text-sm">{errors["typeOfSubscriptionU"] || "err"}</p>
+          </div>
+          <div
+            className={`relative flex items-center justify-between border border-button ${
+              errors["typeOfSubscriptionU"] ? "border-red-500" : ""
+            } rounded-lg py-1.5 lg:py-2.5 text-xs md:text-sm`}
+          >
+            <select
+              id="typeOfSubscription"
+              className="block px-2 appearance-none text-third font-semibold font-secondary uppercase bg-transparent focus:outline-none leading-8 absolute top-0 bottom-0 left-0 right-0"
+              name="typeOfSubscription"
+              required
+              onChange={(e) => handleChange(e)}
+            >
+              <option defaultValue>Choose a type of subscription</option>
+              <option value="Free">Free</option>
+              <option value="Basic">Basic</option>
+              <option value="Pro">Pro</option>
+            </select>
+            <div className="opacity-0" />
+            <div className="flex items-center">
+              <div className="hidden md:inline w-[2px] h-7 bg-button" />
+              <ToolTip
+                name="typeOfSubscription"
+                icon={<AiOutlineDown size={25} className="text-button" />}
+              />
+            </div>
           </div>
         </div>
       </form>

@@ -92,7 +92,7 @@ function Stepper({steps, currentStep}) {
           {/* Display description */}
           <div
             className={`inline absolute top-0 text-center mt-14 w-24 text-xs uppercase ${
-              step.highlighted ? "text-third font-bold" : "text-gray-400 font-medium"
+              step.highlighted ? "text-third font-bold" : "text-gray font-medium"
             }`}
           >
             {step.description}

@@ -26,11 +26,11 @@ export const FooterData = [
         title: "Pricing",
       },
       {
-        id: 1,
+        id: 2,
         title: "Document",
       },
       {
-        id: 1,
+        id: 3,
         title: "Guides",
       },
     ],
@@ -44,11 +44,11 @@ export const FooterData = [
         title: "About",
       },
       {
-        id: 1,
+        id: 2,
         title: "Blog",
       },
       {
-        id: 1,
+        id: 3,
         title: "Jobs",
       },
     ],
@@ -62,11 +62,11 @@ export const FooterData = [
         title: "Claim",
       },
       {
-        id: 1,
+        id: 2,
         title: "Policy",
       },
       {
-        id: 1,
+        id: 3,
         title: "Terms",
       },
     ],

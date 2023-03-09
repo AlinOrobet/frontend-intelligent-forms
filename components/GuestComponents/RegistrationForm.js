@@ -10,7 +10,26 @@ import Final from "./RegisterComponents/steps/Final.js";
 function RegistrationForm({setStep}) {
   const router = useRouter();
   const [typeOfUser, setTypeOfUser] = useState("");
-  const initialValues = {};
+  const initialValues = {
+    UserAccount: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+      typeOfUser: "",
+    },
+    CompanyDetails: {
+      entityName: "",
+      fiscalCode: "",
+      address: "",
+      typeOfSubscription: "",
+    },
+    UserDetails: {
+      entityName: "",
+      institutionName: "",
+      address: "",
+      typeOfSubscription: "",
+    },
+  };
   const [userData, setUserData] = useState(initialValues);
   const [finalData, setFinalData] = useState([]);
   const [currentStep, setCurrentStep] = useState(1);
@@ -39,11 +58,11 @@ function RegistrationForm({setStep}) {
     newStep > 0 && newStep <= steps.length && setStep(newStep - 1);
   };
   return (
-    <div className="h-full flex flex-col items-center px-10 py-3">
-      <div className="container horizontal md:w-1/2 py-5">
+    <div className="h-full flex flex-col items-center px-10 pb-10 pt-5">
+      <div className="container horizontal md:w-1/2 py-4">
         <Stepper steps={steps} currentStep={currentStep} />
       </div>
-      <div className="h-full w-full md:w-4/5 pb-4 md:pb-6">
+      <div className="h-full w-full md:w-4/5 pb-4 md:pb-4">
         <StepperContext.Provider
           value={{
             userData,
