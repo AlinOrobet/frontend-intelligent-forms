@@ -3,19 +3,19 @@ import Image from "next/image";
 function Features() {
   return (
     <div className="h-full w-full px-5 md:p-7 lg:px-10 text-white font-secondary font-bold space-y-5 relative max-w-[1200px] m-auto ">
-      <h2 className="text-2xl">Features</h2>
-      <div className="md:flex">
+      <h2 className="text-2xl xl:text-3xl">Features</h2>
+      <div className="md:flex ">
         {/* left side md*/}
-        <div className="md:flex-col md:space-y-5 md:border-r-4 relative md:pr-10">
-          <p className="text-xl  px-7 text-center md:px-[70px] ">
+        <div className="md:flex-col md:space-y-5 md:border-r-4 relative md:pr-10 xl:space-y-10">
+          <p className="text-xl  px-7 text-center md:px-[70px] xl:text-2xl">
             Create an account on our website so you can enjoy the perks of it.
           </p>
           {/* first section mobile retrieve */}
           <div className="flex flex-row-reverse text-lg items-center md:flex-col md:space-y-5 justify-between">
-            <div className="relative w-[200px] h-[200px] ">
+            <div className="relative w-[200px] h-[200px] xl:h-[300px] xl:w-[300px] ">
               <Image src="/assets/main/tasta-ft.png" fill />
             </div>
-            <p className=" text-right w-[130px] md:w-auto   md:px-[50px] md:text-center">
+            <p className=" text-right text-xl xl:text-2xl w-[130px] md:w-auto   md:px-[50px] md:text-center">
               Retrieve completed forms from users with the click of a button.
             </p>
           </div>
@@ -43,16 +43,16 @@ function Features() {
         <div className=" md:flex-row-reverse md:ml-10">
           {/* mobile second part easily */}
           <div className="flex items-center md:flex-col justify-between">
-            <div className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px] md:absolute md:-top-5 ">
+            <div className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px] md:absolute md:-top-1 xl:h-[300px] xl:w-[300px] ">
               <Image src="/assets/main/create-ft.png" fill />
             </div>
-            <p className="text-lg  text-left w-[120px] md:w-auto md:text-center md:mt-[145px]  md:px-[70px]">
+            <p className="text-xl xl:text-2xl  text-left w-[120px] md:w-auto md:text-center md:mt-[145px]  md:px-[70px]">
               Easily create a form using our form creation page and wait for
               people to complete it.
             </p>
           </div>
           <div>
-            <p className="text-xl text-center md:text-center md:mt-[30px] md:px-[60px]">
+            <p className="text-xl xl:text-2xl text-center md:text-center md:mt-[30px] md:px-[60px]">
               If you are looking to complete a form, enter the URL here
             </p>
             <div>
@@ -61,7 +61,7 @@ function Features() {
                 placeholder="form URL"
                 type="text"
                 id="searchURL"
-                className="block w-[200px] mx-auto mt-4 py-1 rounded-md text-black px-2"
+                className="block w-[200px] xl:w-[300px] mx-auto mt-4 py-1 rounded-md text-black px-2"
               ></input>
             </div>
           </div>
