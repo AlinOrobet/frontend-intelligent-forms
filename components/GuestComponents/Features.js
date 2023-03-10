@@ -5,11 +5,13 @@ function Features() {
     <div className="h-full w-full px-5 md:p-7 lg:px-10 text-white font-secondary font-bold space-y-5 relative max-w-[1200px] m-auto ">
       <h2 className="text-2xl">Features</h2>
       <div className="md:flex">
-        <div className="md:flex-col md:space-y-5 md:border-r-4 relative">
+        {/* left side md*/}
+        <div className="md:flex-col md:space-y-5 md:border-r-4 relative md:pr-10">
           <p className="text-xl  px-7 text-center md:px-[70px] ">
             Create an account on our website so you can enjoy the perks of it.
           </p>
-          <div className="flex flex-row-reverse text-lg items-center md:flex-col md:space-y-5">
+          {/* first section mobile retrieve */}
+          <div className="flex flex-row-reverse text-lg items-center md:flex-col md:space-y-5 justify-between">
             <div className="relative w-[200px] h-[200px] ">
               <Image src="/assets/main/tasta-ft.png" fill />
             </div>
@@ -17,20 +19,34 @@ function Features() {
               Retrieve completed forms from users with the click of a button.
             </p>
           </div>
-          {/* pointing circle */}
-          <div className="hidden flex absolute right-[-73px] top-0 items-center z-10">
-            <div className="block p-4 rounded-full bg-white"></div>
-            <div className=" text-sm  ">- - - - - - - - </div>
-            <div className="block p-2 rounded-full border-2"></div>
+          {/* pointing circles */}
+          <div className="hidden md:inline">
+            <div className="flex absolute right-[-110px] top-4 items-center z-10">
+              <div className="block p-4 rounded-full bg-white"></div>
+              <div className=" text-sm  ">- - - - - - - - </div>
+              <div className="block p-2 rounded-full border-2"></div>
+            </div>
+            <div className="flex absolute right-[-18px] top-[200px] items-center z-10 lg:top-[160px]">
+              <div className="block p-2 rounded-full border-2"></div>
+              <div className=" text-sm  ">- - - - - - - - </div>
+              <div className="block p-4 rounded-full bg-white"></div>
+            </div>
+            <div className="flex absolute right-[-110px] bottom-4 items-center z-10">
+              <div className="block p-4 rounded-full bg-white"></div>
+              <div className=" text-sm  ">- - - - - - - - </div>
+              <div className="block p-2 rounded-full border-2"></div>
+            </div>
           </div>
           {/* endof pointing circle */}
         </div>
-        <div className=" md:flex-row-reverse">
-          <div className="flex items-center md:flex-col">
+        {/* right side md */}
+        <div className=" md:flex-row-reverse md:ml-10">
+          {/* mobile second part easily */}
+          <div className="flex items-center md:flex-col justify-between">
             <div className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px] md:absolute md:-top-5 ">
               <Image src="/assets/main/create-ft.png" fill />
             </div>
-            <p className="text-lg  text-left w-[120px] md:w-auto md:text-center md:mt-[160px]  md:px-[70px]">
+            <p className="text-lg  text-left w-[120px] md:w-auto md:text-center md:mt-[145px]  md:px-[70px]">
               Easily create a form using our form creation page and wait for
               people to complete it.
             </p>
@@ -45,7 +61,7 @@ function Features() {
                 placeholder="form URL"
                 type="text"
                 id="searchURL"
-                className="block w-[300px] mx-auto mt-4 py-1 rounded-md text-black px-2"
+                className="block w-[200px] mx-auto mt-4 py-1 rounded-md text-black px-2"
               ></input>
             </div>
           </div>
