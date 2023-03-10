@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Hero() {
   return (
-    <div className="h-screen  md:h-full w-full p-5 md:p-7 lg:px-10">
+    <div className="h-screen  md:h-full w-full p-5 md:p-7 lg:px-10 ">
       <h2 className=" text-3xl font-secondary font-bold text-white  md:text-4xl tracking-wider md:leading-normal lg:text-5xl lg:leading-normal ">
         Your solution for reducing bureaucracy and simplifying your daily tasks
       </h2>
@@ -18,7 +18,7 @@ function Hero() {
             <p>
               We understand how frustrating it can be to navigate through
               endless paperwork and
-            </p>{" "}
+            </p>
             bureaucratic red tape, which is why we're here to help.
             <p></p>
           </div>
