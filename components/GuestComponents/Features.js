@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 function Features() {
   return (
-    <div className="h-full w-full px-5 md:p-7 lg:px-10 text-white font-secondary font-bold space-y-5 relative ">
+    <div className="h-full w-full px-5 md:p-7 lg:px-10 text-white font-secondary font-bold space-y-5 relative max-w-[1200px] m-auto ">
       <h2 className="text-2xl">Features</h2>
       <div className="md:flex">
         <div className="md:flex-col md:space-y-5 md:border-r-4 relative">
@@ -18,7 +18,7 @@ function Features() {
             </p>
           </div>
           {/* pointing circle */}
-          <div className="flex absolute right-[-73px] top-0 items-center z-10">
+          <div className="hidden flex absolute right-[-73px] top-0 items-center z-10">
             <div className="block p-4 rounded-full bg-white"></div>
             <div className=" text-sm  ">- - - - - - - - </div>
             <div className="block p-2 rounded-full border-2"></div>
