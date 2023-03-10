@@ -23,12 +23,12 @@ function Hero() {
             <p></p>
           </div>
           {/* GET STARTED */}
-          <button className=" text-secondary bg-white py-3 px-[100px] rounded-md font-bold text-lg block m-auto shadow-2xl md:m-0 md:px-[60px] lg:py-1 hover:scale-110 active:scale-90 ">
+          <button className=" text-secondary bg-white py-3 px-[90px]  rounded-md font-bold text-lg block m-auto shadow-2xl md:m-0 md:px-[60px] lg:py-1 hover:scale-110 active:scale-90 ">
             <Link href="/" />
             GET STARTED
           </button>
         </div>
-        <div className=" absolute top-[70px]   right-[0px]  w-[380px] h-[400px]  md:w-[440px] md:h-[480px]  md:top-[20px] lg:h-[600px] lg:w-[550px] lg:top-[-40px] ">
+        <div className=" absolute top-[70px]  right-[0px]  w-[380px] h-[400px]  md:w-[440px] md:h-[480px]  md:top-[20px] lg:h-[600px] lg:w-[550px] lg:top-[-40px] ">
           <Image src="/assets/main/hero-img.png" alt="imagine-hero" fill />
         </div>
       </div>
