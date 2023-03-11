@@ -30,7 +30,28 @@ function RegistrationForm({setStep}) {
       typeOfSubscription: "",
     },
   };
+  const initialValuesErr = {
+    UserAccount: {
+      email: undefined,
+      password: undefined,
+      confirmPassword: undefined,
+      typeOfUser: undefined,
+    },
+    CompanyDetails: {
+      entityName: undefined,
+      fiscalCode: undefined,
+      address: undefined,
+      typeOfSubscription: undefined,
+    },
+    UserDetails: {
+      entityName: undefined,
+      institutionName: undefined,
+      address: undefined,
+      typeOfSubscription: undefined,
+    },
+  };
   const [userData, setUserData] = useState(initialValues);
+  const [errors, setErrors] = useState(initialValuesErr);
   const [finalData, setFinalData] = useState([]);
   const [currentStep, setCurrentStep] = useState(1);
   const [stepHaveErrors, setStepHaveErrors] = useState(true);
@@ -78,8 +99,8 @@ function RegistrationForm({setStep}) {
           value={{
             userData,
             setUserData,
-            finalData,
-            setFinalData,
+            errors,
+            setErrors,
           }}
         >
           {displayStep(currentStep)}

@@ -8,26 +8,29 @@ import ToolTip from "../inputsComponents/ToolTip";
 import {AiOutlineDown, AiFillInfoCircle} from "react-icons/ai";
 import {HiOutlineLocationMarker} from "react-icons/hi";
 import {FiAlertTriangle} from "react-icons/fi";
-function UserDetails({stepHaveErrors, setStepHaveErrors}) {
-  const [errors, setErrors] = useState({});
-  const {userData, setUserData} = useContext(StepperContext);
+function UserDetails({setStepHaveErrors}) {
+  const {userData, setUserData, errors, setErrors} = useContext(StepperContext);
   const handleChange = (e) => {
     const {name, value} = e.target;
     setUserData({...userData}, (userData.UserDetails[name] = value));
-    let errors_var = userDetails_validate(userData);
-    setErrors(errors_var);
+    setErrors((prevState) => ({
+      ...prevState,
+      UserDetails: {
+        ...prevState.UserDetails,
+        [name]: userDetails_validate(name, userData),
+      },
+    }));
   };
   useEffect(() => {
     const handleChangeStepHaveErrors = () => {
-      if (Object.keys(errors).length === 0) {
-        setStepHaveErrors(false);
-      } else {
-        setStepHaveErrors(true);
+      for (let key in errors.UserDetails) {
+        if (errors.UserDetails[key] !== "") {
+          return true;
+        }
       }
+      return false;
     };
-    let errors_var = userDetails_validate(userData);
-    setErrors(errors_var);
-    handleChangeStepHaveErrors();
+    setStepHaveErrors(handleChangeStepHaveErrors());
   }, [errors]);
   return (
     <div className="h-full w-full flex justify-center">
@@ -36,15 +39,15 @@ function UserDetails({stepHaveErrors, setStepHaveErrors}) {
         <div className="mt-8">
           <div
             className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
-              errors["entityNameU"] ? "opacity-100 text-alert" : "opacity-0"
+              errors.UserDetails?.entityName ? "opacity-100 text-alert" : "opacity-0"
             }`}
           >
             <FiAlertTriangle size={20} />
-            <p className="text-xs md:text-sm">{errors["entityNameU"] || "err"}</p>
+            <p className="text-xs md:text-sm">{errors.UserDetails?.entityName || "err"}</p>
           </div>
           <div
             className={`relative flex items-center border  ${
-              errors["entityNameU"] ? "border-alert" : "border-button"
+              errors.UserDetails?.entityName ? "border-alert" : "border-button"
             } rounded-lg`}
           >
             <Input
@@ -65,15 +68,15 @@ function UserDetails({stepHaveErrors, setStepHaveErrors}) {
         <div className="mt-2">
           <div
             className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
-              errors["institutionName"] ? "opacity-100 text-alert" : "opacity-0"
+              errors.UserDetails?.institutionName ? "opacity-100 text-alert" : "opacity-0"
             }`}
           >
             <FiAlertTriangle size={20} />
-            <p className="text-xs md:text-sm">{errors["institutionName"] || "err"}</p>
+            <p className="text-xs md:text-sm">{errors.UserDetails?.institutionName || "err"}</p>
           </div>
           <div
             className={`relative flex items-center border  ${
-              errors["institutionName"] ? "border-alert" : "border-button"
+              errors.UserDetails?.institutionName ? "border-alert" : "border-button"
             } rounded-lg`}
           >
             <Input
@@ -93,15 +96,15 @@ function UserDetails({stepHaveErrors, setStepHaveErrors}) {
           <div className="mt-2">
             <div
               className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
-                errors["addressU"] ? "opacity-100 text-alert" : "opacity-0"
+                errors.UserDetails?.address ? "opacity-100 text-alert" : "opacity-0"
               }`}
             >
               <FiAlertTriangle size={20} />
-              <p className="text-xs md:text-sm">{errors["addressU"] || "err"}</p>
+              <p className="text-xs md:text-sm">{errors.UserDetails?.address || "err"}</p>
             </div>
             <div
               className={`relative flex items-center border  ${
-                errors["addressU"] ? "border-alert" : "border-button"
+                errors.UserDetails?.address ? "border-alert" : "border-button"
               } rounded-lg`}
             >
               <Input
@@ -123,15 +126,15 @@ function UserDetails({stepHaveErrors, setStepHaveErrors}) {
         <div className="mt-2">
           <div
             className={`flex items-center space-x-1 md:space-x-2 ${
-              errors["typeOfSubscriptionU"] ? "opacity-100 text-alert" : "opacity-0"
+              errors.UserDetails?.typeOfSubscription ? "opacity-100 text-alert" : "opacity-0"
             }`}
           >
             <FiAlertTriangle size={20} />
-            <p className="text-xs md:text-sm">{errors["typeOfSubscriptionU"] || "err"}</p>
+            <p className="text-xs md:text-sm">{errors.UserDetails?.typeOfSubscription || "err"}</p>
           </div>
           <div
             className={`relative flex items-center justify-between border  ${
-              errors["typeOfSubscriptionU"] ? "border-alert" : "border-button"
+              errors.UserDetails?.typeOfSubscription ? "border-alert" : "border-button"
             } rounded-lg py-1.5 lg:py-2.5 text-xs md:text-sm`}
           >
             <select

@@ -17,43 +17,46 @@ function UserAccount({setTypeOfUser, setStepHaveErrors}) {
       setShow({...show, password: !show.password});
     }
   };
-  const {userData, setUserData} = useContext(StepperContext);
-  const [errors, setErrors] = useState({});
+  const {userData, setUserData, errors, setErrors} = useContext(StepperContext);
   const handleChange = (e) => {
     const {name, value} = e.target;
     setUserData({...userData}, (userData.UserAccount[name] = value));
-    let errors_var = userAccount_validate(userData);
-    setErrors(errors_var);
+    setErrors((prevState) => ({
+      ...prevState,
+      UserAccount: {
+        ...prevState.UserAccount,
+        [name]: userAccount_validate(name, userData),
+      },
+    }));
   };
   useEffect(() => {
     const handleChangeStepHaveErrors = () => {
-      if (Object.keys(errors).length === 0) {
-        setStepHaveErrors(false);
-      } else {
-        setStepHaveErrors(true);
+      for (let key in errors.UserAccount) {
+        if (errors.UserAccount[key] !== "") {
+          return true;
+        }
       }
+      return false;
     };
-    let errors_var = userAccount_validate(userData);
-    setErrors(errors_var);
-    handleChangeStepHaveErrors();
-  }, []);
+    setStepHaveErrors(handleChangeStepHaveErrors());
+  }, [errors]);
   return (
     <div className="h-full w-full flex justify-center">
       <form className="flex flex-col w-full md:w-4/5">
-        {/* E-mail */}
+        {/* E-mail errors.errors_var */}
         <div className="mt-8">
           <div
             className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
-              errors["email"] ? "opacity-100 text-alert" : "opacity-0"
+              errors.UserAccount?.email ? "opacity-100 text-alert" : "opacity-0"
             }`}
           >
             <FiAlertTriangle size={20} />
-            <p className="text-xs md:text-sm">{errors["email"] || "err"}</p>
+            <p className="text-xs md:text-sm">{errors.UserAccount?.email || "err"}</p>
           </div>
           <div
-            className={`relative flex items-center border  ${
-              errors["email"] ? "border-alert" : "border-button"
-            } rounded-lg`}
+            className={`relative flex items-center border ${
+              errors.UserAccount?.email ? "border-alert" : "border-button"
+            }  rounded-lg`}
           >
             <Input
               handleChange={handleChange}
@@ -71,16 +74,16 @@ function UserAccount({setTypeOfUser, setStepHaveErrors}) {
         <div className="mt-2">
           <div
             className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
-              errors["password"] ? "opacity-100 text-alert" : "opacity-0"
+              errors.UserAccount?.password ? "opacity-100 text-alert" : "opacity-0"
             }`}
           >
             <FiAlertTriangle size={20} />
-            <p className="text-xs md:text-sm">{errors["password"] || "err"}</p>
+            <p className="text-xs md:text-sm">{errors.UserAccount?.password || "err"}</p>
           </div>
           <div
-            className={`relative flex items-center border  ${
-              errors["password"] ? "border-alert" : "border-button"
-            } rounded-lg`}
+            className={`relative flex items-center border ${
+              errors.UserAccount?.password ? "border-alert" : "border-button"
+            }  rounded-lg`}
           >
             <Input
               handleChange={handleChange}
@@ -101,15 +104,15 @@ function UserAccount({setTypeOfUser, setStepHaveErrors}) {
         <div className="mt-2">
           <div
             className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
-              errors["confirmPassword"] ? "opacity-100 text-alert" : "opacity-0"
+              errors.UserAccount?.confirmPassword ? "opacity-100 text-alert" : "opacity-0"
             }`}
           >
             <FiAlertTriangle size={20} />
-            <p className="text-xs md:text-sm">{errors["confirmPassword"] || "err"}</p>
+            <p className="text-xs md:text-sm">{errors.UserAccount?.confirmPassword || "err"}</p>
           </div>
           <div
             className={`relative flex items-center border  ${
-              errors["confirmPassword"] ? "border-alert" : "border-button"
+              errors.UserAccount?.confirmPassword ? "border-alert" : "border-button"
             } rounded-lg`}
           >
             <Input
@@ -131,15 +134,15 @@ function UserAccount({setTypeOfUser, setStepHaveErrors}) {
         <div className="mt-2">
           <div
             className={`flex items-center space-x-1 md:space-x-2 ${
-              errors["typeOfUser"] ? "opacity-100 text-alert" : "opacity-0"
+              errors.UserAccount?.typeOfUser ? "opacity-100 text-alert" : "opacity-0"
             }`}
           >
             <FiAlertTriangle size={20} />
-            <p className="text-xs md:text-sm">{errors["typeOfUser"] || "err"}</p>
+            <p className="text-xs md:text-sm">{errors.UserAccount?.typeOfUser || "err"}</p>
           </div>
           <div
             className={`relative flex items-center justify-between border  ${
-              errors["typeOfUser"] ? "border-alert" : "border-button"
+              errors.UserAccount?.typeOfUser ? "border-alert" : "border-button"
             } rounded-lg py-1.5 lg:py-2.5 text-xs md:text-sm`}
           >
             <select
