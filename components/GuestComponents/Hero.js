@@ -5,7 +5,7 @@ import Link from "next/link";
 function Hero() {
   return (
     <section
-      className="h-screen w-screen p-5 md:p-7 lg:px-10 font-secondary font-bold text-primary relative overflow-hidden "
+      className="h-screen w-screen p-5 md:p-7 lg:px-10 font-secondary font-bold text-primary relative lg:overflow-hidden "
       id="hero"
     >
       <h2 className=" text-4xl md:text-5xl  ">
