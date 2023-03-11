@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import Image from "next/legacy/image";
+import {useRouter} from "next/router";
 import Link from "next/link";
 import MainLayout from "../layout/MainLayout";
 import {FiAlertTriangle} from "react-icons/fi";
@@ -9,13 +10,27 @@ import Input from "../components/GuestComponents/RegisterComponents/inputsCompon
 import Label from "../components/GuestComponents/RegisterComponents/inputsComponents/Label";
 import ToolTip from "../components/GuestComponents/RegisterComponents/inputsComponents/ToolTip";
 function Login() {
+  const router = useRouter();
   const [show, setShow] = useState(false);
-  const [errors, setErrors] = useState({email: undefined, password: undefined});
-  const handleShow = (name) => {
+  const [user, setUser] = useState({email: "", password: ""});
+  const [errors, setErrors] = useState({email: "", password: ""});
+  const handleShow = () => {
     setShow(!show);
   };
-  const handleChange = () => {};
-  const handleSubmit = () => {};
+  const usernameRef = useRef(null);
+  const passwordRef = useRef(null);
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    localStorage.setItem("token", "TOKEN_TEST");
+    router.push("/");
+  };
   return (
     <MainLayout activeLink="signin">
       <div className="flex-grow flex rounded-xl shadow-2xl bg-white m-3 lg:mx-14">
@@ -44,8 +59,8 @@ function Login() {
           <h2 className="text-5xl font-secondary text-center font-extrabold text-third font-secondary">
             Login
           </h2>
-          <div className="w-full md:w-4/5 pb-4 md:pb-4">
-            <form className="flex flex-col">
+          <div className="w-full md:w-4/5 lg:w-3/5 pb-4 md:pb-4">
+            <form className="flex flex-col" onSubmit={handleSubmit}>
               {/* E-mail*/}
               <div className="mt-8">
                 <div
@@ -62,7 +77,14 @@ function Login() {
                     errors?.email ? "border-alert" : "border-button"
                   }  rounded-lg`}
                 >
-                  <Input handleChange={handleChange} type="text" name="email" />
+                  <input
+                    className="form_input peer"
+                    type="text"
+                    id="email"
+                    name="email"
+                    ref={usernameRef}
+                    onChange={handleChange}
+                  />
                   <Label htmlFor="email" text="E-mail Address" />
                   <div className="hidden md:inline w-[2px] h-7 bg-button" />
                   <ToolTip
@@ -87,10 +109,13 @@ function Login() {
                     errors?.password ? "border-alert" : "border-button"
                   }  rounded-lg`}
                 >
-                  <Input
-                    handleChange={handleChange}
+                  <input
+                    className="form_input peer"
                     type={show ? "text" : "password"}
+                    id="password"
                     name="password"
+                    ref={passwordRef}
+                    onChange={handleChange}
                   />
                   <Label htmlFor="password" text="Password" />
                   <div className="hidden md:inline w-[2px] h-7 bg-button" />
@@ -112,7 +137,7 @@ function Login() {
               <div className="flex flex-col items-center">
                 {/* Login button */}
                 <button
-                  onClick={handleSubmit}
+                  type="submit"
                   className="w-1/2 md:w-1/4 bg-button py-2 text-primary font-secondary font-bold rounded-md  my-5"
                 >
                   Login

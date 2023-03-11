@@ -1,13 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useContext} from "react";
 import {StepperContext} from "../../../../contexts/StepperContext";
 import {userDetails_validate} from "../../../../lib/validations";
+import {selectDataTypeOfSubscriptions} from "../../../../data/ResgisterData";
 import Label from "../inputsComponents/Label";
 import Input from "../inputsComponents/Input";
 import ToolTip from "../inputsComponents/ToolTip";
+import Select from "../inputsComponents/Select";
 import {AiOutlineDown, AiFillInfoCircle} from "react-icons/ai";
 import {HiOutlineLocationMarker} from "react-icons/hi";
 import {FiAlertTriangle} from "react-icons/fi";
+
 function UserDetails({setStepHaveErrors}) {
   const {userData, setUserData, errors, setErrors} = useContext(StepperContext);
   const handleChange = (e) => {
@@ -96,27 +99,27 @@ function UserDetails({setStepHaveErrors}) {
           <div className="mt-2">
             <div
               className={`flex items-center mb-1 space-x-1 md:space-x-2 ${
-                errors.UserDetails?.address ? "opacity-100 text-alert" : "opacity-0"
+                errors.UserDetails?.entityAddress ? "opacity-100 text-alert" : "opacity-0"
               }`}
             >
               <FiAlertTriangle size={20} />
-              <p className="text-xs md:text-sm">{errors.UserDetails?.address || "err"}</p>
+              <p className="text-xs md:text-sm">{errors.UserDetails?.entityAddress || "err"}</p>
             </div>
             <div
               className={`relative flex items-center border  ${
-                errors.UserDetails?.address ? "border-alert" : "border-button"
+                errors.UserDetails?.entityAddress ? "border-alert" : "border-button"
               } rounded-lg`}
             >
               <Input
                 handleChange={handleChange}
                 type="text"
-                name="address"
-                value={userData.UserDetails.address}
+                name="entityAddress"
+                value={userData.UserDetails.entityAddress}
               />
-              <Label htmlFor="address" text="Address" />
+              <Label htmlFor="entityAddress" text="Address" />
               <div className="hidden md:inline w-[2px] h-7 bg-button" />
               <ToolTip
-                name="address"
+                name="entityAddress"
                 icon={<HiOutlineLocationMarker size={25} className="text-button" />}
               />
             </div>
@@ -137,20 +140,12 @@ function UserDetails({setStepHaveErrors}) {
               errors.UserDetails?.typeOfSubscription ? "border-alert" : "border-button"
             } rounded-lg py-1.5 lg:py-2.5 text-xs md:text-sm`}
           >
-            <select
-              id="typeOfSubscription"
-              className="block px-2 appearance-none text-third font-semibold font-secondary uppercase bg-transparent focus:outline-none leading-8 absolute top-0 bottom-0 left-0 right-0"
+            <Select
+              selectData={selectDataTypeOfSubscriptions}
               name="typeOfSubscription"
-              required
-              onChange={(e) => handleChange(e)}
-            >
-              <option defaultValue>
-                {userData.UserDetails.typeOfSubscription || "Choose a type of subscription"}
-              </option>
-              <option value="Free">Free</option>
-              <option value="Basic">Basic</option>
-              <option value="Pro">Pro</option>
-            </select>
+              value={userData.UserDetails.typeOfSubscription}
+              handleChange={handleChange}
+            />
             <div className="opacity-0" />
             <div className="flex items-center">
               <div className="hidden md:inline w-[2px] h-7 bg-button" />

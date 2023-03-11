@@ -1,58 +1,19 @@
 import React, {useState} from "react";
 import {useRouter} from "next/router";
 import {StepperContext} from "../../contexts/StepperContext";
+import {initialValues, initialValuesErr} from "../../data/ResgisterData";
 import Stepper from "./RegisterComponents/Stepper";
 import StepperControl from "./RegisterComponents/StepperControl";
 import UserAccount from "./RegisterComponents/steps/UserAccount.js";
 import CompanyDetails from "./RegisterComponents/steps/CompanyDetails.js";
 import UserDetails from "./RegisterComponents/steps/UserDetails.js";
 import Final from "./RegisterComponents/steps/Final.js";
+import axios from "axios";
 function RegistrationForm({setStep}) {
   const router = useRouter();
   const [typeOfUser, setTypeOfUser] = useState("");
-  const initialValues = {
-    UserAccount: {
-      email: "",
-      password: "",
-      confirmPassword: "",
-      typeOfUser: "",
-    },
-    CompanyDetails: {
-      entityName: "",
-      fiscalCode: "",
-      address: "",
-      typeOfSubscription: "",
-    },
-    UserDetails: {
-      entityName: "",
-      institutionName: "",
-      address: "",
-      typeOfSubscription: "",
-    },
-  };
-  const initialValuesErr = {
-    UserAccount: {
-      email: undefined,
-      password: undefined,
-      confirmPassword: undefined,
-      typeOfUser: undefined,
-    },
-    CompanyDetails: {
-      entityName: undefined,
-      fiscalCode: undefined,
-      address: undefined,
-      typeOfSubscription: undefined,
-    },
-    UserDetails: {
-      entityName: undefined,
-      institutionName: undefined,
-      address: undefined,
-      typeOfSubscription: undefined,
-    },
-  };
   const [userData, setUserData] = useState(initialValues);
   const [errors, setErrors] = useState(initialValuesErr);
-  const [finalData, setFinalData] = useState([]);
   const [currentStep, setCurrentStep] = useState(1);
   const [stepHaveErrors, setStepHaveErrors] = useState(true);
   const steps = ["Type of user", "Details", "Final"];
@@ -60,14 +21,10 @@ function RegistrationForm({setStep}) {
     switch (step) {
       case 1:
         return (
-          <UserAccount
-            setTypeOfUser={setTypeOfUser}
-            stepHaveErrors={stepHaveErrors}
-            setStepHaveErrors={setStepHaveErrors}
-          />
+          <UserAccount stepHaveErrors={stepHaveErrors} setStepHaveErrors={setStepHaveErrors} />
         );
       case 2:
-        if (typeOfUser === "Company") {
+        if (userData.UserAccount.typeOfUser === "1") {
           return (
             <CompanyDetails stepHaveErrors={stepHaveErrors} setStepHaveErrors={setStepHaveErrors} />
           );
@@ -79,12 +36,46 @@ function RegistrationForm({setStep}) {
         return <Final />;
     }
   };
+  async function onSubmit() {
+    const data = {
+      email: userData.UserAccount.email,
+      password: userData.UserAccount.password,
+      entityType: userData.UserAccount.typeOfUser,
+    };
+    if (typeOfUser === "Company") {
+      Object.assign(data, {
+        entityName: userData.CompanyDetails.entityName,
+        institutionName: "",
+        entityAddress: userData.CompanyDetails.entityAddress,
+        fiscalCode: userData.CompanyDetails.fiscalCode,
+        subscription: userData.CompanyDetails.typeOfSubscription,
+      });
+    } else {
+      Object.assign(data, {
+        entityName: userData.UserDetails.entityName,
+        institutionName: userData.UserDetails.institutionName,
+        entityAddress: userData.UserDetails.entityAddress,
+        fiscalCode: "-1",
+        subscription: userData.UserDetails.typeOfSubscription,
+      });
+    }
+    //"https://backend-intelligent-forms.azurewebsites.net/registration/createAccount",
+    // const headers = {
+    //   "Content-Type": "application/json",
+    // };
+    // await axios.post("http://localhost:8080/registration/createAccount", JSON.stringify(data));
+    await fetch("http://localhost:8080/registration/createAccount", {
+      mode: "no-cors",
+      method: "POST",
+      body: data,
+    });
+  }
   const handleClick = (direction) => {
     let newStep = currentStep;
     direction === "next" ? newStep++ : newStep--;
     //check if steps are within bounds
     if (newStep > steps.length) {
-      router.push("/login");
+      onSubmit();
     }
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
     newStep > 0 && newStep <= steps.length && setStep(newStep - 1);

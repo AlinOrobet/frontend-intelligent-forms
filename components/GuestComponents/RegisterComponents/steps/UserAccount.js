@@ -2,13 +2,15 @@ import React, {useState, useEffect} from "react";
 import {useContext} from "react";
 import {StepperContext} from "../../../../contexts/StepperContext";
 import {userAccount_validate} from "../../../../lib/validations";
+import {selectDataTypeOfUsers} from "../../../../data/ResgisterData";
 import Label from "../inputsComponents/Label";
 import Input from "../inputsComponents/Input";
 import ToolTip from "../inputsComponents/ToolTip";
 import {MdAlternateEmail} from "react-icons/md";
 import {AiOutlineDown, AiFillEyeInvisible} from "react-icons/ai";
 import {FiAlertTriangle} from "react-icons/fi";
-function UserAccount({setTypeOfUser, setStepHaveErrors}) {
+import Select from "../inputsComponents/Select";
+function UserAccount({setStepHaveErrors}) {
   const [show, setShow] = useState({password: false, confirmPassword: false});
   const handleShow = (name) => {
     if (name === "confirmPassword") {
@@ -145,23 +147,12 @@ function UserAccount({setTypeOfUser, setStepHaveErrors}) {
               errors.UserAccount?.typeOfUser ? "border-alert" : "border-button"
             } rounded-lg py-1.5 lg:py-2.5 text-xs md:text-sm`}
           >
-            <select
-              id="typeOfUser"
-              className="block px-2 appearance-none text-third font-semibold font-secondary uppercase bg-transparent focus:outline-none leading-8 absolute top-0 bottom-0 left-0 right-0"
+            <Select
+              selectData={selectDataTypeOfUsers}
               name="typeOfUser"
-              required
-              onChange={(e) => {
-                setTypeOfUser(e.target.value);
-                handleChange(e);
-              }}
-            >
-              <option defaultValue>
-                {userData.UserAccount.typeOfUser || "Choose a type of account"}
-              </option>
-              <option value="Individual">Individual</option>
-              <option value="Company">Company</option>
-              <option value="PublicInstitution">Public Institution</option>
-            </select>
+              value={userData.UserAccount.typeOfUser}
+              handleChange={handleChange}
+            />
             <div className="opacity-0" />
             <div className="flex items-center">
               <div className="hidden md:inline w-[2px] h-7 bg-button" />

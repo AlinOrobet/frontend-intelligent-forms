@@ -25,3 +25,81 @@ export const RegisterData = [
     formTitle: "Account created!",
   },
 ];
+
+export const initialValues = {
+  UserAccount: {
+    email: "",
+    password: "",
+    confirmPassword: "",
+    typeOfUser: "",
+  },
+  CompanyDetails: {
+    entityName: "",
+    fiscalCode: "",
+    entityAddress: "",
+    typeOfSubscription: "",
+  },
+  UserDetails: {
+    entityName: "",
+    institutionName: "",
+    entityAddress: "",
+    typeOfSubscription: "",
+  },
+};
+export const initialValuesErr = {
+  UserAccount: {
+    email: undefined,
+    password: undefined,
+    confirmPassword: undefined,
+    typeOfUser: undefined,
+  },
+  CompanyDetails: {
+    entityName: undefined,
+    fiscalCode: undefined,
+    entityAddress: undefined,
+    typeOfSubscription: undefined,
+  },
+  UserDetails: {
+    entityName: undefined,
+    institutionName: "",
+    entityAddress: undefined,
+    typeOfSubscription: undefined,
+  },
+};
+
+export const selectDataTypeOfSubscriptions = {
+  id: 1,
+  defaultValue: "Choose a type of subsctiption",
+  values: [
+    {
+      id: 0,
+      name: "Free",
+    },
+    {
+      id: 1,
+      name: "Basic",
+    },
+    {
+      id: 2,
+      name: "Pro",
+    },
+  ],
+};
+export const selectDataTypeOfUsers = {
+  id: 1,
+  defaultValue: "Choose a type of account",
+  values: [
+    {
+      id: 0,
+      name: "Public Institution",
+    },
+    {
+      id: 1,
+      name: "Company",
+    },
+    {
+      id: 2,
+      name: "Individual",
+    },
+  ],
+};
