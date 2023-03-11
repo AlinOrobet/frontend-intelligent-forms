@@ -30,8 +30,8 @@ function Guest() {
     <MainLayout activeLink="home">
       <div className="flex-grow ">
         <Hero />
-        <Features />
-        <Subscriptions />
+        {/* <Features /> */}
+        {/* <Subscriptions /> */}
         <Contact />
       </div>
     </MainLayout>
