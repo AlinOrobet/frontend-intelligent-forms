@@ -2,72 +2,67 @@ import React from "react";
 import Image from "next/image";
 function Features() {
   return (
-    <div className="h-full w-full px-5 md:p-7 lg:px-10 text-white font-secondary font-bold space-y-5 relative max-w-[1200px] m-auto xl:py-[90px] ">
-      <h2 className="text-2xl xl:text-3xl">Features</h2>
-      <div className="md:flex relative space-y-5">
-        {/* left side md*/}
-        <div className="md:flex-col md:space-y-5 md:border-r-4 relative md:pr-[60px] xl:space-y-10">
-          <p className="text-xl  px-7 text-center md:px-[30px] xl:text-2xl">
-            Create an account on our website so you can enjoy the perks of it.
-          </p>
-          {/* first section mobile retrieve */}
-          <div className="flex flex-row-reverse text-lg items-center md:flex-col md:space-y-5 justify-between">
-            <div className="relative w-[200px] h-[200px] xl:h-[300px] xl:w-[300px] ">
-              <Image src="/assets/main/tasta-ft.png" fill />
-            </div>
-            <p className=" text-right text-xl xl:text-2xl w-[130px] md:w-auto  md:text-center">
-              Retrieve completed forms from users with the click of a button.
-            </p>
+    <section
+      className="h-full w-full px-5 md:px-7 lg:px-20 text-white font-secondary font-bold relative overflow-x-hidden"
+      id="features"
+    >
+      <h1 className="text-2xl md:text-3xl">Features</h1>
+      {/* container all */}
+      <div className="pt-5  grid grid-cols-3 md:grid-cols-5 gap-2  md:gap-0 ">
+        {/* middle bar on bigger screens */}
+
+        <div className="hidden md:inline col-start-3 row-span-4 h-full w-2 bg-primary rounded-xl m-auto relative">
+          {" "}
+          {/* DOt 1 */}
+          <div className=" flex absolute top-[10px] left-[-11px] items-center">
+            <div className="rounded-full p-4 bg-primary "></div>
+            <div className="w-10 py-[2px] px-10 bg-primary xxl:w-[200px]"></div>
+            <div className="rounded-full w-4 h-4 border-2"></div>
           </div>
-          {/* pointing circles */}
-          <div className="hidden md:inline">
-            <div className="flex absolute right-[-110px] top-4 items-center z-10">
-              <div className="block p-4 rounded-full bg-white"></div>
-              <div className=" text-sm  ">- - - - - - - - </div>
-              <div className="block p-2 rounded-full border-2"></div>
-            </div>
-            <div className="flex absolute right-[-18px] top-[160px] items-center z-10 lg:top-[160px] xl:top-[230px]">
-              <div className="block p-2 rounded-full border-2"></div>
-              <div className=" text-sm  ">- - - - - - - - </div>
-              <div className="block p-4 rounded-full bg-white"></div>
-            </div>
-            <div className="flex absolute right-[-110px] bottom-4 items-center z-10">
-              <div className="block p-4 rounded-full bg-white"></div>
-              <div className=" text-sm  ">- - - - - - - - </div>
-              <div className="block p-2 rounded-full border-2"></div>
-            </div>
+          {/* DOT 2 */}
+          <div className=" flex absolute top-[210px] md:left-[-108px] xxl:left-[-228px] items-center">
+            <div className="rounded-full w-4 h-4 border-2"></div>
+            <div className="w-10 py-[2px] px-10 bg-primary xxl:w-[200px]"></div>
+            <div className="rounded-full p-4 bg-primary "></div>
           </div>
-          {/* endof pointing circle */}
+          {/* DOT 3 */}
+          <div className=" flex absolute bottom-[10px] left-[-11px] items-center">
+            <div className="rounded-full p-4 bg-primary "></div>
+            <div className="w-10 py-[2px] px-10 bg-primary xxl:w-[200px]"></div>
+            <div className="rounded-full w-4 h-4 border-2"></div>
+          </div>
         </div>
-        {/* right side md */}
-        <div className=" md:flex-row-reverse md:ml-10 space-y-2">
-          {/* mobile second part easily */}
-          <div className="flex items-center md:flex-col justify-between">
-            <div className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px] md:absolute md:top-[-100px] xl:h-[300px] xl:w-[300px]  ">
-              <Image src="/assets/main/create-ft.png" fill />
-            </div>
-            <p className="text-xl xl:text-2xl  text-left w-[120px] md:w-auto md:text-center md:mt-[125px] xl:mt-[200px]  md:px-[30px] ">
-              Easily create a form using our form creation page and wait for
-              people to complete it.
-            </p>
-          </div>
-          <div>
-            <p className="text-xl xl:text-2xl text-center md:text-center md:mt-[30px] xl:mt-[75px] md:px-[20px] ">
-              If you are looking to complete a form, enter the URL here
-            </p>
-            <div>
-              <label className=""></label>
-              <input
-                placeholder="form URL"
-                type="text"
-                id="searchURL"
-                className="block w-[200px] xl:w-[300px] mx-auto mt-4 py-1 rounded-md text-black px-2"
-              ></input>
-            </div>
-          </div>
+
+        {/* end of middle bar */}
+        <p className=" flex items-center justify-center text-2xl col-span-3 text-center md:text-xl  md:col-span-2 md:row-start-1  md:px-6   ">
+          Create an account on our website so you can enjoy the perks of it.
+        </p>
+        <p className="flex items-center justify-center text-xl text-right md:row-start-3 md:col-span-2 md:mt-5  ">
+          Retrieve completed forms from users with the click of a button.
+        </p>
+
+        <div className="flex items-center justify-center relative h-[200px] w-[200px] ml-5 md:m-auto md:row-start-2 md:col-span-2   ">
+          <Image src="/assets/main/tasta-ft.png" fill />
+        </div>
+        <div className="relative h-[100px] w-[180px] md:h-[140px] md:w-[260px] m-auto row-start-3 md:col-start-4 md:row-start-1 md:col-span-2 ">
+          <Image src="/assets/main/pushing.png" fill />
+        </div>
+        <p className="text-xl flex items-center row-start-3 col-span-2 ml-[70px] md:ml-0 md:col-span-2 md:col-start-4 md:row-start-2 md:text-center md:justify-center  ">
+          Easily create a form using our form creation page and wait for people
+          to complete it.
+        </p>
+        <p className="col-span-3 text-2xl md:text-xl text-center md:col-span-2 md:col-start-4 md:row-start-3">
+          If you are looking to complete a form, enter the URL here:{" "}
+        </p>
+        <div className="col-span-3 md:col-span-2 md:col-start-4 md:row-start-4">
+          <label></label>
+          <input
+            placeholder="form URL"
+            className="p-2 w-full md:w-[280px] rounded-md mt-3 md:flex md:m-auto text-third "
+          ></input>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
