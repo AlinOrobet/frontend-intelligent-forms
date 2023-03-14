@@ -59,15 +59,13 @@ function RegistrationForm({setStep}) {
         subscription: userData.UserDetails.typeOfSubscription,
       });
     }
-    //"https://backend-intelligent-forms.azurewebsites.net/registration/createAccount",
-    // const headers = {
-    //   "Content-Type": "application/json",
-    // };
-    // await axios.post("http://localhost:8080/registration/createAccount", JSON.stringify(data));
-    await fetch("http://localhost:8080/registration/createAccount", {
-      mode: "no-cors",
+    const res = await fetch("http://localhost:8080/registration/createAccount", {
+      mode: "cors",
       method: "POST",
-      body: data,
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json",
+      },
     });
   }
   const handleClick = (direction) => {

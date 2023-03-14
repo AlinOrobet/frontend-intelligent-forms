@@ -8,7 +8,9 @@ import Hero from "../components/GuestComponents/Hero";
 import Features from "../components/GuestComponents/Features";
 import Subscriptions from "../components/GuestComponents/Subscriptions";
 import Contact from "../components/GuestComponents/Contact";
+import DashboardHero from "../components/DashboardComponents/Dashboard/DashboardHero";
 
+import {user} from "../data/StuffData";
 export default function Home() {
   const [session, setSession] = useState(false);
 
@@ -31,16 +33,8 @@ export default function Home() {
 
 function Dashboard(props) {
   return (
-    <DashboardLayout>
-      <button
-        className=""
-        onClick={() => {
-          localStorage.removeItem("token");
-          props.setSession(false);
-        }}
-      >
-        SIGN OUT
-      </button>
+    <DashboardLayout user={user}>
+      <DashboardHero forms={user.forms} />
     </DashboardLayout>
   );
 }
